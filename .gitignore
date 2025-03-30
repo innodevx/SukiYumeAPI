@@ -1,0 +1,17 @@
+node_modules/
+.env
+
+# Logs
+*.log
+
+# Diretórios de build
+dist/
+build/
+
+# Arquivos de IDEs
+.vscode/
+.idea/
+
+# Arquivos do sistema operacional
+Thumbs.db
+.DS_Store
