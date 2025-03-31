@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const { checkAuthUser } = require('../services/userService');
 
-const protect = async (req, res, next) => {
+const protectAdmin = async (req, res, next) => {
     try {
         const user = await checkAuthUser(req);
         
-        if (!user) {
-            return res.status(401).json({ message: 'Not authorized' });
+        if (!user || user.profilePermission !== 'admin') {
+            return res.status(403).json({ message: 'Permission denied' });
         }
 
         req.user = user;
@@ -18,4 +18,4 @@ const protect = async (req, res, next) => {
 };
 
 
-module.exports = protect;
+module.exports = protectAdmin;
